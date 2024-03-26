@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/ToDoList.css">
+</head>
+<body class="bg-slate-700 m-0 h-full flex flex-col">
+    <div class="h-1/6  font-bold flex text-4xl italic pl-16 pr-16 justify-between items-end  ">To-Do List:
+        <div class="gap-2"> 
+            <button id="show-completed-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  
+            </button>
+        <button id="show-incomplete-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              
+        </button>
+        </div>
+        
+    </div>
+    <div id="content" class="h-full flex flex-col ml-16 mr-16 border-t-4 border-b-4 border-black rounded-3xl overflow-auto">
+        <div id ="content-btn" class="w-full h-full flex justify-center items-center">
+                    <button id="add-ToDoList" class="h-20 w-52 flex justify-center items-center text-center bg-black text-white font-bold text-2xl border-3 border-black rounded-2xl hover:bg-white hover:text-black border-none transition-all duration-300"> Add To-Do List</button>
+        </div>
+    </div>
+    <div class="h-1/6 pr-16 flex flex-row-reverse pt-2 gap-2">
+        <button id="ig" class="h-7 w-14">
+            <img  src="data:image/png;base64,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" alt="">
+        </button>
+        <button id="fb" class="h-7 w-14">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADhCAMAAADmr0l2AAAAdVBMVEUAAAD///9MTEwlJSV9fX1dXV2lpaWUlJTg4OA0NDTNzc37+/vq6urm5uavr6/W1tbBwcHHx8eamppAQEBQUFD09PQgICAsLCxmZmb29vZWVlYLCws5OTmMjIxra2uEhIR0dHRFRUUZGRmtra25ubmgoKARERFUKwxYAAAE0ElEQVR4nO3d23KqQBAF0MEYRS5qVESMChrM/3/i0STGW1RkT5+epno/pCov0KtQQOiZMd5lMr8/aq9a0jJZ5dthFF5xzPm/ybCYGsEZLwf3gFmnx10hnkl5E1im3MXZyTr4E5jMuAuzl2V2DRw04NN5TCu6BAbcJVlOGp8Dm+bbxT8FDrirIcg0PgKjhpw+z7POfoGv3LXQJD8AO9yVUOXtGxhtuAuhyjj8Ana566BLuQc29wDurvfhDvjBXQVlgh1wzl0EZdqeSbhrIE2amSF3DbSJTYPPofv0zYq7BNp0TaN+Bl5nZl64S6BNy7xzl0CbRv5OOk3DP6AKlB8FSo8CpUeB0qNA6XEE+D596fV688XuTzqd2rz/Zwf2ZsuPwI+OLyy9LItifzD86LZX8wX8SJMVuMhL/0T2R7IkfuuPilb9MvmAi+7guufjVkK/7u86JuCmfdnt8Sh1n6ywAF9G0WORYOA2eZonCVjU4ckBpm+1eGKAs3qHTwywW5cnBDis75MAfA8eMyQDMZ8AIOZzH4h8/yQAgfOnCOAr6nMcuIkfC0QD+7DPbSD+AXUc+OyPW2nAtgWfy8BP/AzjNjC34XMZ6DccaOMU6jSw7jMKMUA7PneBy6YDbVzkXQZOq79/kAksLPmcBZaPS79KmESRH1zE1bdLz17lw0FnNRb0hrf33Fcw2o5tV0AMnD/l237ar4AY+MyzpnhNUQEx8IlnFQOaCQqIgdWf9voEH899iIGVf+smRD5q4P0mkZMUVBXQAtOqVwm6AVS0wHHVA0g3xI8WWPUySDiMnxY4qwjM6UqgBVZ9Imr9Bu0YJ4AxYQlOAN8IS3ACOCIswQkg4TnGDWCbsAQngJSTSTkBpJztRYFQFKhAOAqEokAFwlEgFAUqEI4CoShQgXAUCEWBCoSjQCgVG7koJwAFgd3O3VRshi3vb6XT+Si4gFYa6iuk/jzSINBOw/njFE0H1v+WygAm9ecIlQEEXgHLAAJdGDKA/aYDl00HAhMtywACEy3LAAIVigAijUIigEizpQggsmCECCDSRyMCiDQjigAiDesSgBFSoQQgtC6bBGDZdCBwqy0DCD02lQCEWtYFALGVvQQAfahCAUDoJCoBiPXkCwBiLesCgJOGA0NsbK/7QOhWWwIQXALZfSDwVFsGELrVlvCGF+xQAIF5924qTrbSv7OJEbggg3ZZQGl8n4wCFQhHgVAUqEA4CoSiQAXCUSAUBSoQjgKhKFCBcBQIRYEKhKNAKApUIBwFQlGgAuEoEIoCFQhHgVAUqEA4CoSiQAXCUSAUBSoQjgKhKPB/AG2uR3kZB4Ap6TF0ANgyhIs6uQCcmYJw6w4Au2ZLuHUHgH0Dju66GweAsUkIt84PTDNDueoRPzD3DDiM+274gcEOCEz9+CjswFa4AxIuHscOLL09MCG7meEGjsMvIDpM9na4gftJlPdAshMpMzD3DsAopdkDL3Cd/QKpFsJlBW6+R1B/A9Hh+DfCCvwZAv8DpBEyAtPDCPgD0PMX9vfCB2xFh43/Ar2ksL4bNuDyuIy6OdnR0PZBZAKug5ONnwK9sL+2uicW4OR8/gVzvq8wyC0exv8PHC8HFxs3V7sLo3LbXrUsZD2qBmyvLexsssq3wyi82vg/aAZShJ6FrBwAAAAASUVORK5CYII=" alt="">
+        </button>
+    </div>
+    <script defer src="../js/ToDoLista.js"></script>
+</body>
+</html>
